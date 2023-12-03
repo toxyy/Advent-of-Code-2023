@@ -1006,14 +1006,14 @@ $total = 0;
 foreach($codes as $code) {
     $digits = [];
     preg_match_all('!\d+!', $code, $matches);
-    $digits[] = $matches[0];
-    $firstkey = array_key_first($digits[0]);
-    $lastkey = array_key_last($digits[0]);
-    $first_number = $digits[0][$firstkey];
-    $last_number = $digits[0][$lastkey];
-    if(count($digits[0]) == 1) {
-        $digit = $digits[0][$firstkey];
-        if(strlen($digits[0][0]) == 1) {
+    $digits = $matches[0];
+    $firstkey = array_key_first($digits);
+    $lastkey = array_key_last($digits);
+    $first_number = $digits[$firstkey];
+    $last_number = $digits[$lastkey];
+    if(count($digits) == 1) {
+        $digit = $digits[$firstkey];
+        if(strlen($digits[0]) == 1) {
             $number = $first_number . $first_number;
         } else {
             $number = substr($first_number, 0, 1) . substr($first_number, -1);
