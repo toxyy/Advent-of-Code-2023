@@ -128,7 +128,6 @@ foreach($data as $row) {
 
 $game_id_total = 0;
 foreach($parsed_data as $game_id => $game_data) {
-    $game_is_ok = 0;
     $count = count($game_data);
     $current_row_count = 0;
     foreach($game_data as $dice_game) {
