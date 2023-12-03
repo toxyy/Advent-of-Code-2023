@@ -1030,7 +1030,7 @@ foreach($codes as $code) {
         if($word_position !== false) {
             if($word_position < $first_position) {
                 $first_position = $word_position;
-                $first_number  = $value;
+                $first_number = $value;
                 array_unshift($digits, $value);
             }
 
