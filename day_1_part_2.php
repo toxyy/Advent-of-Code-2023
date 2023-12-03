@@ -1017,11 +1017,11 @@ $words = [
 foreach($codes as $code) {
     $digits = [];
     preg_match_all('!\d+!', $code, $matches);
-    $digits[] = $matches[0];
-    $firstkey = array_key_first($digits[0]);
-    $lastkey = array_key_last($digits[0]);
-    $first_number = $digits[0][$firstkey];
-    $last_number = $digits[0][$lastkey];
+    $digits = $matches[0];
+    $firstkey = array_key_first($digits);
+    $lastkey = array_key_last($digits);
+    $first_number = $digits[$firstkey];
+    $last_number = $digits[$lastkey];
     $first_position = strpos($code, $first_number);
     $last_position = strrpos($code, $last_number);
 
@@ -1031,20 +1031,20 @@ foreach($codes as $code) {
             if($word_position < $first_position) {
                 $first_position = $word_position;
                 $first_number  = $value;
-                array_unshift($digits[0], $value);
+                array_unshift($digits, $value);
             }
 
             $word_position = strrpos($code, $word);
             if($word_position > $last_position) {
                 $last_position = $word_position;
                 $last_number = $value;
-                $digits[0][] = $value;
+                $digits[] = $value;
             }
         }
     }
-    if(count($digits[0]) == 1) {
-        $digit = $digits[0][$firstkey];
-        if(strlen($digits[0][0]) == 1) {
+    if(count($digits) == 1) {
+        $digit = $digits[$firstkey];
+        if(strlen($digits[0]) == 1) {
             $number = $first_number . $first_number;
         } else {
             $number = substr($first_number, 0, 1) . substr($first_number, -1);
